@@ -5,6 +5,6 @@ import java.util.List;
 
 
 public interface ArticleService {
-    List<Article> getAllArticles();
+    List<Article> getAllArticles(int offset, int pageSize);
 
 }

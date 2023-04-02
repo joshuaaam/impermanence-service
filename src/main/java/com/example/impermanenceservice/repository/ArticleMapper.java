@@ -10,7 +10,7 @@ public interface ArticleMapper {
     @Select("SELECT * FROM article WHERE id = #{id}")
     Article getArticleById(Integer id);
 
-    @Select("SELECT * FROM article")
+    @Select("SELECT * FROM article LIMIT #{offset},#{pageSize}")
     List<Article> getAllArticles();
 
     @Insert("INSERT INTO article(title, content, tags) VALUES(#{title}, #{content}, #{tags})")

@@ -16,7 +16,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> getAllArticles() {
+    public List<Article> getAllArticles(int offset, int pageSize) {
         return articleMapper.getAllArticles();
     }
 
