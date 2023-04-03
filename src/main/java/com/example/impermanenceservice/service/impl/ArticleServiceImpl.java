@@ -20,7 +20,7 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.getAllArticles(offset,pageSize);
     }
 
-    public void  addArticle(Article article){
-        articleMapper.addArticle(article);
+    public int addArticle(Article article){
+        return articleMapper.addArticle(article);
     }
 }

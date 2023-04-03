@@ -14,11 +14,12 @@ public interface ArticleMapper {
     List<Article> getAllArticles(int offset, int pageSize);
 
     @Insert("INSERT INTO article(title, content, tags) VALUES(#{title}, #{content}, #{tags})")
+    @ResultType(Integer.class)
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void addArticle(Article article);
+    int addArticle(Article article);
 
     @Update("UPDATE article SET title = #{title}, content = #{content}, tags = #{tags} WHERE id = #{id}")
-    void updateUser(Article article);
+    boolean updateUser(Article article);
 
     @Delete("DELETE FROM article WHERE id = #{id}")
     void deleteArticleById(Integer id);

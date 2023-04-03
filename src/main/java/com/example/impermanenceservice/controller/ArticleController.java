@@ -23,19 +23,25 @@ public class ArticleController {
 //        return articleService.getAllArticles();
 //    }
     @GetMapping("/list")
-    public ApiResponse<List<Article>> getAllArticles(
+    public <T> ApiResponse<List<Article>> getAllArticles(
             @RequestParam(required = false, defaultValue = "1") int page,
             @RequestParam(required = false, defaultValue = "10") int pageSize
             ){
         int offset = (page - 1) * pageSize;
         List<Article> list = articleService.getAllArticles(offset, pageSize);
         return  new ApiResponse<>(200, "OK", list);
-    }
+}
 
     @PostMapping("/add")
-    public void addArticle(
+    public <T> ApiResponse<T>  addArticle(
             @RequestBody Article article
             ){
-        articleService.addArticle(article);
+        int rows = articleService.addArticle(article);
+        if(rows>0){
+            return  new ApiResponse<>(200, "OK");
+        }else{
+            return  new ApiResponse<>(201, "err");
+        }
+//        return articleService.addArticle(article);
     }
 }
