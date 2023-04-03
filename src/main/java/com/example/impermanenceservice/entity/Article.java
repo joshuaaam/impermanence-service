@@ -16,4 +16,6 @@ public class Article {
     private Date create_time;
 
     private Date update_time;
+
+    private Integer status;
 }

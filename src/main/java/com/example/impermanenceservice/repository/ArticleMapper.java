@@ -11,7 +11,7 @@ public interface ArticleMapper {
     Article getArticleById(Integer id);
 
     @Select("SELECT * FROM article LIMIT #{offset},#{pageSize}")
-    List<Article> getAllArticles();
+    List<Article> getAllArticles(int offset, int pageSize);
 
     @Insert("INSERT INTO article(title, content, tags) VALUES(#{title}, #{content}, #{tags})")
     @Options(useGeneratedKeys = true, keyProperty = "id")

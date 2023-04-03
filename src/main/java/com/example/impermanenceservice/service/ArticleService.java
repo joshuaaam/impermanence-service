@@ -7,4 +7,6 @@ import java.util.List;
 public interface ArticleService {
     List<Article> getAllArticles(int offset, int pageSize);
 
+    void addArticle(Article article);
+
 }

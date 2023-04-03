@@ -31,4 +31,11 @@ public class ArticleController {
         List<Article> list = articleService.getAllArticles(offset, pageSize);
         return  new ApiResponse<>(200, "OK", list);
     }
+
+    @PostMapping("/add")
+    public void addArticle(
+            @RequestBody Article article
+            ){
+        articleService.addArticle(article);
+    }
 }

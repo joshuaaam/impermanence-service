@@ -17,5 +17,4 @@ public class CommentController {
     public List<Comment> getAllComment() {
         return commentService.getAllComment();
     }
-
 }
