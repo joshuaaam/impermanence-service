@@ -18,4 +18,6 @@ public class Article {
     private Date update_time;
 
     private Integer status;
+
+    private String ids;
 }

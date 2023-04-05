@@ -19,9 +19,9 @@ public interface ArticleMapper {
     int addArticle(Article article);
 
     @Update("UPDATE article SET title = #{title}, content = #{content}, tags = #{tags} WHERE id = #{id}")
-    boolean updateUser(Article article);
+    boolean updateArticle(Article article);
 
-    @Delete("DELETE FROM article WHERE id = #{id}")
-    void deleteArticleById(Integer id);
+    @Delete("DELETE FROM article WHERE FIND_IN_SET(id,#{ids})")
+    int deleteArticleById(String id);
 }
 
