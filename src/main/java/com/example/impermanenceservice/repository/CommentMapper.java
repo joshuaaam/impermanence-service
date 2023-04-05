@@ -10,8 +10,8 @@ public interface CommentMapper {
 //    @Select("SELECT * FROM comment WHERE id = #{id}")
 //    Comment getCommentById(Integer id);
 
-    @Select("SELECT * FROM comment")
-    List<Comment> getAllComment();
+    @Select("SELECT * FROM comment LIMIT #{offset},#{pageSize}")
+    List<Comment> getAllComment(int offset, int pageSize);
 
 //    @Insert("INSERT INTO comment(title, content, tags) VALUES(#{title}, #{content}, #{tags})")
 //    @Options(useGeneratedKeys = true, keyProperty = "id")

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CommentService {
 
-    List<Comment> getAllComment();
+    List<Comment> getAllComment(int offset, int pageSize);
 }

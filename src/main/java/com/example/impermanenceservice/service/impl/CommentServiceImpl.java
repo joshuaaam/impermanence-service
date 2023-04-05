@@ -16,8 +16,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getAllComment() {
-        return commentMapper.getAllComment();
+    public List<Comment> getAllComment(int offset, int pageSize) {
+        return commentMapper.getAllComment(offset, pageSize);
     }
 
 }
