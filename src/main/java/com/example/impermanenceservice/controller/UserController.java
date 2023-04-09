@@ -1,6 +1,6 @@
 package com.example.impermanenceservice.controller;
 
-import com.example.impermanenceservice.common.ApiResponse;
+import com.example.impermanenceservice.config.ApiResponse;
 import com.example.impermanenceservice.entity.User;
 import com.example.impermanenceservice.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;

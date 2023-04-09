@@ -1,4 +1,4 @@
-package com.example.impermanenceservice.common;
+package com.example.impermanenceservice.config;
 
 import lombok.Data;
 

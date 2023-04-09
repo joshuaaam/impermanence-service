@@ -1,7 +1,6 @@
 package com.example.impermanenceservice.controller;
 
-import com.example.impermanenceservice.common.ApiResponse;
-import com.example.impermanenceservice.entity.Article;
+import com.example.impermanenceservice.config.ApiResponse;
 import com.example.impermanenceservice.entity.Comment;
 import com.example.impermanenceservice.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
