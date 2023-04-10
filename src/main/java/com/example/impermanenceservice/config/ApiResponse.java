@@ -8,6 +8,8 @@ public class ApiResponse<T> {
     private String message;
     private T data;
 
+    private String token;
+
     public ApiResponse(int code, String message) {
         this.code = code;
         this.message = message;
@@ -18,5 +20,13 @@ public class ApiResponse<T> {
         this.message = message;
         this.data = data;
     }
+
+    public ApiResponse(int code, String message, String token) {
+        this.code = code;
+        this.message = message;
+        this.token = token;
+    }
+
+
 }
 
