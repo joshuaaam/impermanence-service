@@ -8,7 +8,7 @@ import java.util.List;
 public interface ArticleMapper {
 
     @Select("SELECT * FROM article WHERE id = #{id}")
-    Article getArticleById(Integer id);
+    Article getArticleById(int id);
 
     @Select("SELECT * FROM article LIMIT #{offset},#{pageSize}")
     List<Article> getAllArticles(int offset, int pageSize);

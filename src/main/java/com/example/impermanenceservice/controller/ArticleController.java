@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -21,23 +20,28 @@ public class ArticleController {
     private RedisTemplate<String, String> redisTemplate;
 
     @GetMapping("/list")
-    public <T> ApiResponse<List<Article>> getAllArticles(
+    public ApiResponse<List<Article>> getAllArticles(
             @RequestParam(required = false, defaultValue = "1") int page,
             @RequestParam(required = false, defaultValue = "10") int pageSize
     ) {
         int offset = (page - 1) * pageSize;
         List<Article> list = articleService.getAllArticles(offset, pageSize);
-//        hashCode() value = redisTemplate.opsForValue().get("proxies:universal");
-//        HashOperations<String, String, Object> hashOperations = redisTemplate.opsForHash();
-//        Map<String, Object> map = hashOperations.entries("proxies:universal");
-//        System.out.println(map);
-//        ZSetOperations<String, Object> zSetOps = redisTemplate.opsForZSet();
-//        ZSetOperations<String, Object> zSetOps = redisTemplate.opsForZSet();
 
-//        ZSetOperations<String, String> zsetOps = redisTemplate.opsForZSet();
-//        System.out.println(zsetOps.reverseRange("proxies:universal", 0, -1));
+        ZSetOperations<String, String> zsetOps = redisTemplate.opsForZSet();
+        System.out.println(zsetOps.reverseRange("proxies:universal", 0, -1));
         return new ApiResponse<>(200, "OK", list);
     }
+
+
+    @PostMapping("/detail")
+    public ApiResponse<Article> detail(
+            @RequestBody Article data
+    ) {
+        int id = data.getId();
+        Article article = articleService.getArticleDetail(id);
+        return new ApiResponse<>(200, "OK", article);
+    }
+
 
     @PostMapping("/add")
     public <T> ApiResponse<T> addArticle(

@@ -10,4 +10,6 @@ public interface ArticleService {
     int addArticle(Article article);
 
     int deleteArticleById(String id);
+
+    Article getArticleDetail(int id);
 }
