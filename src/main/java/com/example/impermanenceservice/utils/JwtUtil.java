@@ -1,11 +1,10 @@
 package com.example.impermanenceservice.utils;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.springframework.stereotype.Component;
 
+import java.security.Key;
 import java.util.Date;
 import java.util.Map;
 
@@ -14,6 +13,7 @@ public class JwtUtil {
 
     private static final String SECRET_KEY = "impermanence_63"; //密钥
     private static final long EXPIRATION_TIME = 86400000; // 过期时间（毫秒）
+
 
     /**
      * 生成 JWT
@@ -38,7 +38,17 @@ public class JwtUtil {
      * @param token JWT
      * @return 载荷
      */
-    public Claims parseToken(String token) {
+    public static boolean validateToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
+            return true;
+        } catch (SignatureException e) {
+            // token签名不正确
+            return false;
+        }
+    }
+
+    public static Claims parseToken(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 }
