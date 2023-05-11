@@ -20,6 +20,11 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.getAllArticles(offset, pageSize);
     }
 
+    @Override
+    public List<Article> getAllArticlesByApp(int offset, int pageSize) {
+        return articleMapper.getAllArticlesByApp(offset, pageSize);
+    }
+
     public int addArticle(Article article) {
         return articleMapper.addArticle(article);
     }
