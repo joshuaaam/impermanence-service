@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.impermanenceservice.repository.ArticleMapper">
+    <update id="updateArticle">
+        UPDATE article
+        <set>
+            <if test="title!=null">
+                title = #{title},
+            </if>
+            <if test="content!=null">
+                content = #{content},
+            </if>
+            <if test="tags!=null">
+                tags = #{tags},
+            </if>
+            <if test="create_time!=null">
+                create_time = #{create_time},
+            </if>
+            <if test="create_time!=null">
+                content = #{content},
+            </if>
+            <if test="status!=null">
+                status = #{status},
+            </if>
+            <if test="cover!=null">
+                cover = #{cover},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>
