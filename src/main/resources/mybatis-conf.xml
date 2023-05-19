@@ -1,0 +1,6 @@
+<mappers>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+</mappers>
+
