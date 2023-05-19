@@ -21,10 +21,12 @@ public interface ArticleMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int addArticle(Article article);
 
-    @Update("UPDATE article SET title = #{title}, content = #{content}, tags = #{tags} WHERE id = #{id}")
-    boolean updateArticle(Article article);
+//    @Update("UPDATE article SET title = #{title}, content = #{content}, tags = #{tags} WHERE id = #{id}")
+//    boolean updateArticle(Article article);
 
     @Delete("DELETE FROM article WHERE FIND_IN_SET(id,#{ids})")
     int deleteArticleById(String id);
+
+    int updateArticle(Article article);
 }
 

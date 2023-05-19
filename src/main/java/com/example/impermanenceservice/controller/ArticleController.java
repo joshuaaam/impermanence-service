@@ -27,8 +27,8 @@ public class ArticleController {
         int offset = (page - 1) * pageSize;
         List<Article> list = articleService.getAllArticles(offset, pageSize);
 
-        ZSetOperations<String, String> zsetOps = redisTemplate.opsForZSet();
-        System.out.println(zsetOps.reverseRange("proxies:universal", 0, -1));
+//        ZSetOperations<String, String> zsetOps = redisTemplate.opsForZSet();
+//        System.out.println(zsetOps.reverseRange("proxies:universal", 0, -1));
         return new ApiResponse<>(200, "OK", list);
     }
 
@@ -53,7 +53,6 @@ public class ArticleController {
         } else {
             return new ApiResponse<>(201, "err");
         }
-//        return articleService.addArticle(article);
     }
 
     @PostMapping("/delete")
@@ -66,4 +65,14 @@ public class ArticleController {
         }
     }
 
+    @PostMapping("/update")
+    public ApiResponse<Article> updateArticle(@RequestBody Article article) {
+        int row = articleService.updateArticle(article);
+        if (row <= 0) {
+            return new ApiResponse<>(201, "更新失败");
+        }
+        int id = article.getId();
+        Article data = articleService.getArticleDetail(id);
+        return new ApiResponse<>(200, "OK", data);
+    }
 }

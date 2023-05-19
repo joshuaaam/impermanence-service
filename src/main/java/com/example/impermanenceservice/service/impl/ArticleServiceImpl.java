@@ -36,4 +36,8 @@ public class ArticleServiceImpl implements ArticleService {
     public Article getArticleDetail(int id) {
         return articleMapper.getArticleById(id);
     }
+
+    public int updateArticle(Article article) {
+        return articleMapper.updateArticle(article);
+    }
 }
