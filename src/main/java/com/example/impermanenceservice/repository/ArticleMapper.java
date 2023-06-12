@@ -13,7 +13,7 @@ public interface ArticleMapper {
     @Select("SELECT * FROM article LIMIT #{offset},#{pageSize}")
     List<Article> getAllArticles(int offset, int pageSize);
 
-    @Select("SELECT * FROM article WHERE status=1 LIMIT #{offset},#{pageSize}")
+    @Select("SELECT * FROM article WHERE status=0 LIMIT #{offset},#{pageSize}")
     List<Article> getAllArticlesByApp(int offset, int pageSize);
 
     @Insert("INSERT INTO article(title, content, tags) VALUES(#{title}, #{content}, #{tags})")
@@ -28,5 +28,7 @@ public interface ArticleMapper {
     int deleteArticleById(String id);
 
     int updateArticle(Article article);
+
+    List<Article> getNewArticleList(Integer offset, Integer pageSize);
 }
 

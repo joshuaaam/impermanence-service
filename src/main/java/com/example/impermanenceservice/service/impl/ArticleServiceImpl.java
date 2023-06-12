@@ -40,4 +40,9 @@ public class ArticleServiceImpl implements ArticleService {
     public int updateArticle(Article article) {
         return articleMapper.updateArticle(article);
     }
+
+    @Override
+    public List<Article> getNewArticleList(Integer offset, Integer pageSize) {
+        return articleMapper.getNewArticleList(offset, pageSize);
+    }
 }

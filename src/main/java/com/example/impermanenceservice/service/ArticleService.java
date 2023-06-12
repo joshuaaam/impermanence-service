@@ -16,4 +16,6 @@ public interface ArticleService {
     Article getArticleDetail(int id);
 
     int updateArticle(Article article);
+
+    List<Article> getNewArticleList(Integer offset, Integer pageSize);
 }
