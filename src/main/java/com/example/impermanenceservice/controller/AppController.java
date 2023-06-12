@@ -4,18 +4,17 @@ import com.example.impermanenceservice.config.ApiResponse;
 import com.example.impermanenceservice.entity.Article;
 import com.example.impermanenceservice.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.*;
 
 @RestController
 @RequestMapping("/app")
 public class AppController {
 
+    @Autowired
     private ArticleService articleService;
+
     @GetMapping("/getArticleList")
     public ApiResponse<List<Article>> getAllArticlesByApp(
             @RequestParam(required = false, defaultValue = "1") int page,
